@@ -63,7 +63,7 @@ def randomizeHot():
     elif(hairStyle == 'F')|(hairStyle == 'f'):
         points += 9
     elif(hairStyle == 'G')|(hairStyle == 'g'):
-        points += rand.randint(1,12)
+        points += random.randint(1,12)
     elif(hairStyle == 'H')|(hairStyle == 'h'):
         points += 7
     else:
@@ -107,7 +107,8 @@ def randomizeHot():
     print('|')
     height = input('What is your height in inches? (ex: 72in=6ft) ')
     if(height.isdigit()):
-        if(height > 70):
+        height = int(height)
+        if(height >= 70):
             points += 6
         else:
             points += 3
@@ -131,6 +132,7 @@ def randomizeHot():
     print('|')
     howSleep = input('How many hours do you generally sleep a night? ')
     if(howSleep.isdigit()):
+        howSleep = int(howSleep)
         if(howSleep > 4):
             points += 6
         else:
@@ -138,17 +140,62 @@ def randomizeHot():
     else:
         print('....That wasn\'t a number buddy')
         points -= 10
+    time.sleep(0.25)
+    print('|')
     print('Do you think that you are hot? ')
     isHot = input('A. Yes | B. No ')
     if(isHot == 'A')|(isHot == 'a'):
         points += 10
     elif(isHot == 'B')|(isHot == 'b'):
+        points -= 10
+    else:
+        print('Not an option mannnn...')
+        points -= 10
+    time.sleep(0.25)
+    print('|')
     print('Do you like cheese? ')
     likeCheese = input('A. Yes | B. No ')
+    if(isHot == 'A')|(isHot == 'a'):
+        points += 10
+    elif(isHot == 'B')|(isHot == 'b'):
+        points -= 10
+    else:
+        print('Not an option mannnn...')
+        points -= 10
+    time.sleep(0.25)
+    print('|')
     print('What is your favorite animal? ')
-    taco = input('A. Taco')
-    
-    
-    
+    taco = input('A. Taco ')
+    if(isHot == 'A')|(isHot == 'a'):
+        points += 100
+    else:
+        print('Not an option mannnn...')
+        points -= 100
+    count = random.randint(3,10)
+    hotCalc(points,count)
+
+def hotCalc(points,count):
+    print('Calculating Hottness...')
+    while count < 10:
+        time.sleep(1)
+        print('...')
+        count += 1
+        hotCalc(points,count)
+    print('Done!')
+    time.sleep(0.5)
+    print(points,'Total Points')
+    print('|')
+    print('|')
+    print('|')
+    print('|')
+    if(points > 110):
+        print('You are hot!')
+    else:
+        print('Ugly.. Very Ugly')
+    print('|')
+    print('|')
+    print('|')
+    print('|')
+    areYou()
     
 areYou()
