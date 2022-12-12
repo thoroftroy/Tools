@@ -23,7 +23,12 @@ def start():
         maxNum = len(names)-1
     elif(numOrName=='2')|(numOrName=='number')|(numOrName=='Number'):
         index = 1
-        maxNum = int(input('Number of people:'))
+        maxNum = input('Number of people:')
+        if(maxNum.isnumeric()):
+            maxNum = round(int(maxNum))
+        else:
+            print('That ain\'t working bub')
+            start()
     else:
         print('No comprendo')
         print('|')
@@ -36,5 +41,5 @@ def start():
     time.sleep(0.5)
     print('|')
     print('For the rest of you, your moms put you first :) So you get to live')
-        
+    start()
 start()
