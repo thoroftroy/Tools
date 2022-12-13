@@ -29,6 +29,10 @@ def start():
         else:
             print('That ain\'t working bub')
             start()
+    elif(numOrName == 'clear'):
+        for x in range(35):
+            print("|")
+        start()
     else:
         print('No comprendo')
         print('|')
