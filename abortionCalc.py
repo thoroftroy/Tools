@@ -17,7 +17,7 @@ def wait(maxNum,names,index):
     
 def start():
     names = ['Camden','Ben','Hannah','Atticus','Schory','Megan','Sophia','August','Angelica','Kamryn','Mason','Madison']
-    numOrName = input('Names(1) or Number(2) ')
+    numOrName = input('Names(1) or Number(2) or Clear(3)')
     if(numOrName=='1')|(numOrName=='names')|(numOrName=='Names'):
         index = 0
         maxNum = len(names)-1
@@ -29,7 +29,7 @@ def start():
         else:
             print('That ain\'t working bub')
             start()
-    elif(numOrName == 'clear'):
+    elif(numOrName == 'clear')|(numOrName=='3'):
         for x in range(35):
             print("|")
         start()
