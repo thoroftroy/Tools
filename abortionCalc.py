@@ -17,7 +17,7 @@ def wait(maxNum,names,index):
     
 def start():
     names = ['Camden','Ben','Hannah','Atticus','Schory','Megan','Sophia','August','Angelica','Kamryn','Mason','Madison']
-    numOrName = input('Names(1) or Number(2) or Clear(3)')
+    numOrName = input('Names(1) | Number(2) | Clear(3) ')
     if(numOrName=='1')|(numOrName=='names')|(numOrName=='Names'):
         index = 0
         maxNum = len(names)-1
