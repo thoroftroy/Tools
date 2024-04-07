@@ -3,13 +3,6 @@
 #Imports
 import random
 import time
-#import tty
-#import sys
-#import termios
-
-#orig_settings = termios.tcgetattr(sys.stdin)
-
-#tty.setcbreak(sys.stdin)
 
 #Global Varianles
 randomNum = None
@@ -28,59 +21,72 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 #Randomy displays a bunch of symbols
-def randomSymbols():
+def randomSymbols(timeToDisplay):
     print(f"{bcolors.OKGREEN}")
+    lineNum = 0
     #x = 0
-    while True:
+    while timeToDisplay > 0 or timeToDisplay < 0:
+        print(lineNum,end=' ')
         randomNum = random.randint(1, 100)
-        i = random.randint(160,240) #Change this to your screen size
+        i = random.randint(160,220) #Change this to your screen size
         e = 1
         while e < i:
             print(random.choice(randomCharacters), end='')
             e += 1
         
         print(random.choice(randomCharacters))
+        lineNum += 1
         sleepTime = random.randint(1,1000)
         sleepTime = sleepTime / 10000
         time.sleep(sleepTime)
+        timeToDisplay -= 1
 
-#This section is an attempt to stop when a key is pressed, I'm having trouble getting it to work though
-        #if x == chr(27):
-        #    x=sys.stdin.read(1)[0]
-        #    break
-
-    #main()
+    main()
 
 #Randomly displays a bunch of 1s and 0s
-def randomBianary():
+def randomBianary(timeToDisplay):
     print(f"{bcolors.OKGREEN}")
-    while True:
-        i = random.randint(240,240) #Change this to whatever size your terminal is
+    lineNum = 0
+    while timeToDisplay > 0 or timeToDisplay < 0:
+        print(lineNum,end=' ')
+        i = random.randint(230,230) #Change this to whatever size your terminal is
         e = 1
         while e < i:
             print(random.choice(bianary),end='')
             e += 1
         
         print(random.choice(bianary))
+        lineNum += 1
         sleepTime = random.randint(1,1000)
         sleepTime = sleepTime / 10000
         time.sleep(sleepTime)
+
+        timeToDisplay -= 1
     
     main()
 
 def main():
     print(f"{bcolors.ENDC}")
 
-    print("Symbols[0] or Bianary[1]?")
+    print("Symbols[0] or Bianary[1] or TimedSymbols[2] or TimedBianary[3]?")
     choice = input()
     if choice == "0":
-        randomSymbols()
+        randomSymbols(-1)
     elif choice == "1":
-        randomBianary()
+        randomBianary(-1)
+    elif choice == "2":
+        print("Input number of lines to draw")
+        timeToDisplay = int(input())
+        timeToDisplay
+        randomSymbols(timeToDisplay)
+    elif choice == "3":
+        print("Input number of lines to draw")
+        timeToDisplay = int(input())
+        randomBianary(timeToDisplay)
+    elif choice == "":
+        randomSymbols(-1)
     else:
         print("Invalid Input")
         main()
 
 main()
-
-#termios.tcsetattr(sys.stdin, termios.TCSADRAIN, orig_settings)
